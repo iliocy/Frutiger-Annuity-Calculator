@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Frutiger Annuity Calculator</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="copy_48DB7C20-C3DE-47F4-A800-7851DD8948CB.m4a" type="audio/mp4">
+    </audio>
+
+    <button
+        type="button"
+        id="musicBtn"
+        aria-label="Toggle background music">
+        🔇
+    </button>
+
+
+    <div class="page welcome-page" id="welcome-page">
+
+        <div class="welcome-content">
+
+            <p class="welcome-small">
+                WELCOME TO OUR
+            </p>
+
+            <h1>
+                Math Project!
+            </h1>
+
+            <h2>
+                Frutiger Annuity Calculator
+            </h2>
+
+            <p class="welcome-description">
+                Helps you calculate annuities easily! :D
+            </p>
+
+            <button
+                type="button"
+                id="startBtn">
+                Start Calculate
+            </button>
+
+            <button
+                type="button"
+                id="creditsBtn">
+                Credits
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="page calculator-page" id="calculator-page">
+
+        <div class="calculator-content">
+
+            <button
+                type="button"
+                id="calculatorBackBtn"
+                class="back-btn">
+                ← Back to Home
+            </button>
+
+            <p class="calculator-small">
+                FINANCIAL TOOL
+            </p>
+
+            <h1>
+                Frutiger Annuity Calculator
+            </h1>
+
+            <p class="calculator-description">
+                Enter the data to calculate the annuity
+            </p>
+
+
+            <div class="input-group">
+
+                <label for="loan">
+                    Loan Amount
+                </label>
+
+                <input
+                    type="number"
+                    id="loan"
+                    placeholder="Enter the loan amount"
+                    min="1"
+                >
+
+                <div
+                    class="loan-suggestions"
+                    id="loanSuggestions">
+
+                    <p class="suggestion-label">
+                        Quick Suggestions
+                    </p>
+
+                    <div class="loan-options">
+
+                        <button type="button">Rp1.000.000</button>
+                        <button type="button">Rp2.000.000</button>
+                        <button type="button">Rp5.000.000</button>
+                        <button type="button">Rp10.000.000</button>
+                        <button type="button">Rp20.000.000</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="interest">
+                    Interest Rate per Month (%)
+                </label>
+
+                <input
+                    type="number"
+                    id="interest"
+                    placeholder="Enter the monthly interest"
+                    step="0.1"
+                    min="0"
+                >
+
+                <div
+                    class="interest-suggestions"
+                    id="interestSuggestions">
+
+                    <p class="suggestion-label">
+                        Quick Suggestions
+                    </p>
+
+                    <div class="interest-options">
+
+                        <button type="button">0%</button>
+                        <button type="button">0.5%</button>
+                        <button type="button">1%</button>
+                        <button type="button">1.5%</button>
+                        <button type="button">2%</button>
+                        <button type="button">2.5%</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="months">
+                    Loan Term (Months)
+                </label>
+
+                <input
+                    type="number"
+                    id="months"
+                    placeholder="Enter the loan term"
+                    min="1"
+                    step="1"
+                >
+
+                <div
+                    class="term-suggestions"
+                    id="termSuggestions">
+
+                    <p class="suggestion-label">
+                        Quick Suggestions
+                    </p>
+
+                    <div class="term-options">
+
+                        <button type="button">6 Months</button>
+                        <button type="button">12 Months</button>
+                        <button type="button">24 Months</button>
+                        <button type="button">36 Months</button>
+                        <button type="button">60 Months</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="calculateBtn">
+                Calculate Annuity
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="page result-page" id="result-page">
+
+        <div class="result-content">
+
+            <button
+                type="button"
+                id="backBtn"
+                class="back-btn">
+                ← Back to Calculator
+            </button>
+
+
+            <div class="result-title">
+
+                <p class="result-small">
+                    𓆝 𓆟 𓆞 𓆝 𓆟
+                </p>
+
+                <h1>
+                    Calculation Result
+                </h1>
+
+                <p>
+                    Here is your complete annuity payment information!!
+                </p>
+
+            </div>
+
+
+            <div id="result"></div>
+
+
+            <div
+                class="view-section"
+                id="view-section">
+
+                <div class="view-title">
+
+                    <p>
+                        VIEW PAYMENT DETAILS
+                    </p>
+
+                </div>
+
+                <div class="view-options">
+
+                    <button
+                        type="button"
+                        id="tableBtn"
+                        class="active">
+                        Table
+                    </button>
+
+                    <button
+                        type="button"
+                        id="chartBtn">
+                        Chart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="table-container"
+                id="table-container">
+
+                <div class="section-heading">
+
+                    <p>
+                        𓇼 ⋆.˚ 𓆉 𓆝 𓆡⋆.˚ (˶ˆᗜˆ˵)
+                    </p>
+
+                    <h2>
+                        Payment Table
+                    </h2>
+
+                </div>
+
+                <div class="table-scroll">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Month</th>
+                                <th>Annuity</th>
+                                <th>Principal</th>
+                                <th>Interest</th>
+                                <th>Remaining Balance</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="table-body"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="chart-container"
+                id="chart-container">
+
+                <div class="section-heading">
+
+                    <p>
+                        𖦹🍀୭˚. ᵎᵎ｡🧷𖦹°‧°‧ 𓆝 𓆟 𓆞 ·｡
+                    </p>
+
+                    <h2>
+                        Payment Chart
+                    </h2>
+
+                </div>
+
+                <div class="chart-legend">
+
+                    <span>
+                        <i class="principal-legend"></i>
+                        Principal
+                    </span>
+
+                    <span>
+                        <i class="interest-legend"></i>
+                        Interest
+                    </span>
+
+                </div>
+
+                <div id="chart"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="page credits-page" id="credits-page">
+
+        <div class="credits-content">
+
+            <button
+                type="button"
+                id="creditsBackBtn"
+                class="back-btn">
+                ← Back to Home
+            </button>
+
+
+            <div class="credits-title">
+
+                <p>
+              𓆝 𓆟 𓆞 𓆝 𓆟 (˶ˆᗜˆ˵) 𓆝 𓆟 𓆞 𓆝 𓆟
+                </p>
+
+                <h1>
+                    Credits
+                </h1>
+
+                <p>
+                    Frutiger Annuity Calculator
+                </p>
+
+            </div>
+
+
+            <div class="team-list">
+
+                <div class="team-card">
+
+                    <span>
+                        27
+                    </span>
+
+                    <div>
+                        <h2>
+                            Raden Ayu Kamila
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div class="team-card">
+
+                    <span>
+                        19
+                    </span>
+
+                    <div>
+                        <h2>
+                            Lukheylu Liliatahta Alfina
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div class="team-card">
+
+                    <span>
+                        25
+                    </span>
+
+                    <div>
+                        <h2>
+                            Nindy Febriani Mauludi
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div class="team-card">
+
+                    <span>
+                        20
+                    </span>
+
+                    <div>
+                        <h2>
+                            Mohammad Razaan Artasena
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div class="team-card">
+
+                    <span>
+                        29
+                    </span>
+
+                    <div>
+                        <h2>
+                            Rafa Fauzan Kamil
+                        </h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p class="credits-footer">
+                Math Project • SMA Negeri 1 Tasikmalaya
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
