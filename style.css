@@ -1888,8 +1888,8 @@ td:nth-child(5) {
         margin-left: 0;
         margin-right: 0;
 
-        padding-left: 26px;
-        padding-right: 26px;
+        padding: 26px;
+        border-radius: 24px;
     }
 
 }
@@ -1905,8 +1905,8 @@ td:nth-child(5) {
         margin-left: auto;
         margin-right: auto;
 
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 20px;
+        border-radius: 20px;
     }
 
 }
@@ -1922,8 +1922,8 @@ td:nth-child(5) {
         margin-left: 0;
         margin-right: 0;
 
-        padding-left: 15px;
-        padding-right: 15px;
+        padding: 19px 15px;
+        border-radius: 20px;
     }
 
 }
