@@ -2065,3 +2065,17 @@ td:nth-child(5) {
     }
 
 }
+
+/* =========================
+   LANDSCAPE TABLE & CHART
+========================= */
+
+@media (orientation: landscape) and (max-height: 700px) {
+    .table-container,
+    .chart-container {
+        width: calc(100% - 40px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
