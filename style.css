@@ -330,7 +330,6 @@ button,
 .input-group {
     position: relative;
 
-    /* FIX */
     z-index: 1;
 
     margin-bottom: 25px;
@@ -358,8 +357,7 @@ button,
 }
 
 .input-group:focus-within {
-    /* FIX */
-    z-index: 100;
+    z-index: 1000;
 }
 
 .input-group:nth-of-type(1) {
@@ -422,7 +420,6 @@ button,
 }
 
 .input-group input:focus {
-    /* FIX: mencegah card/input ikut bergeser */
     transform: none;
 
     border-color: rgba(255, 255, 255, 1);
@@ -446,11 +443,6 @@ button,
    SUGGESTIONS
 ================================= */
 
-/* FIX:
-   Suggestions sekarang floating,
-   jadi tidak mendorong input/card berikutnya.
-*/
-
 .loan-suggestions,
 .interest-suggestions,
 .term-suggestions {
@@ -461,7 +453,7 @@ button,
 
     top: calc(100% - 12px);
 
-    z-index: 1000;
+    z-index: 9999;
 
     padding: 14px;
 
@@ -493,11 +485,8 @@ button,
 .interest-suggestions.show,
 .term-suggestions.show {
     opacity: 1;
-
     visibility: visible;
-
     pointer-events: auto;
-
     transform: translateY(0);
 }
 
@@ -516,6 +505,9 @@ button,
 .loan-options,
 .interest-options,
 .term-options {
+    position: relative;
+    z-index: 10000;
+
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -525,7 +517,7 @@ button,
 .interest-options button,
 .term-options button {
     position: relative;
-    z-index: 2;
+    z-index: 10001;
 
     padding: 9px 16px;
 
@@ -540,6 +532,8 @@ button,
     font-weight: 700;
 
     cursor: pointer;
+
+    pointer-events: auto;
 
     box-shadow:
         0 4px 10px rgba(0, 80, 120, 0.12),
@@ -909,12 +903,11 @@ button,
     position: relative;
     z-index: 1;
 
-    width: 100vw;
+    width: 100%;
 
     margin-top: 20px;
-    margin-left: calc(50% - 50vw);
 
-    padding: 26px max(26px, calc((100vw - 900px) / 2));
+    padding: 26px;
 
     min-height: 500px;
 
@@ -1731,14 +1724,11 @@ td:nth-child(5) {
         padding: 19px;
     }
 
-    /* FIX: hover di HP bisa terasa seperti "nempel"
-       setelah input disentuh, jadi jangan menggeser card. */
     .input-group:hover {
         transform: none;
     }
 
-    /* FIX: menyesuaikan posisi floating suggestion
-       dengan padding input-group versi mobile. */
+
     .loan-suggestions,
     .interest-suggestions,
     .term-suggestions {
@@ -1747,14 +1737,10 @@ td:nth-child(5) {
     }
 
 
-    /*
-       Table/chart tetap full layar,
-       tetapi isi heading diberi jarak
-       agar tidak menempel ke tepi.
-    */
-
     .table-container,
     .chart-container {
+        width: 100%;
+
         padding: 19px 15px;
 
         border-radius: 20px;
@@ -1842,7 +1828,7 @@ td:nth-child(5) {
         padding: 16px;
     }
 
-    /* FIX */
+
     .loan-suggestions,
     .interest-suggestions,
     .term-suggestions {
@@ -1887,195 +1873,57 @@ td:nth-child(5) {
 
 }
 
-/* =================================
-   QUICK SUGGESTIONS CLICK FIX
-================================= */
-
-.input-group:focus-within {
-    z-index: 1000;
-}
-
-.loan-suggestions,
-.interest-suggestions,
-.term-suggestions {
-    z-index: 9999;
-}
-
-.loan-suggestions.show,
-.interest-suggestions.show,
-.term-suggestions.show {
-    pointer-events: auto;
-}
-
-.loan-options,
-.interest-options,
-.term-options {
-    position: relative;
-    z-index: 10000;
-}
-
-.loan-options button,
-.interest-options button,
-.term-options button {
-    position: relative;
-    z-index: 10001;
-    pointer-events: auto;
-}
 
 /* =================================
-   FLOATING QUICK SUGGESTIONS FIX
+   RESPONSIVE TABLE + CHART
 ================================= */
 
-.input-group {
-    position: relative;
-}
+/* Tablet dan desktop */
+@media (min-width: 701px) {
 
-.input-group:focus-within {
-    z-index: 1000;
-}
+    .table-container,
+    .chart-container {
+        width: 100%;
 
+        margin-left: 0;
+        margin-right: 0;
 
-/* Suggestion tidak mengambil ruang layout */
-.loan-suggestions,
-.interest-suggestions,
-.term-suggestions {
-    position: absolute;
-
-    left: 24px;
-    right: 24px;
-
-    top: calc(100% - 12px);
-
-    z-index: 9999;
-
-    padding: 14px;
-
-    background: rgba(255, 255, 255, 0.94);
-
-    border: 1px solid rgba(255, 255, 255, 0.90);
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 10px 25px rgba(0, 80, 120, 0.18),
-        inset 0 2px 8px rgba(255, 255, 255, 0.80);
-
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-
-    opacity: 0;
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transform: translateY(-6px);
-
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease,
-        visibility 0.2s ease;
-}
-
-
-.loan-suggestions.show,
-.interest-suggestions.show,
-.term-suggestions.show {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform: translateY(0);
-
-}
-
-
-/* Tombol suggestion harus bisa diklik */
-
-.loan-options,
-.interest-options,
-.term-options {
-    position: relative;
-    z-index: 10000;
-}
-
-
-.loan-options button,
-.interest-options button,
-.term-options button {
-    position: relative;
-
-    z-index: 10001;
-
-    pointer-events: auto;
-}
-
-
-/* Jangan bikin input membesar saat fokus */
-
-.input-group input:focus {
-
-    transform: none;
-
-    border-color: rgba(255, 255, 255, 1);
-
-    background: rgba(255, 255, 255, 0.92);
-
-    box-shadow:
-        0 0 0 3px rgba(142, 216, 255, 0.25),
-        0 5px 15px rgba(0, 100, 150, 0.10),
-        inset 0 3px 8px rgba(0, 80, 120, 0.08),
-        inset 0 -2px 5px rgba(255, 255, 255, 0.75);
-}
-
-
-/* =================================
-   MOBILE SUGGESTIONS
-================================= */
-
-@media (max-width: 700px) {
-
-    .input-group:hover {
-        transform: none;
-    }
-
-    .loan-suggestions,
-    .interest-suggestions,
-    .term-suggestions {
-        left: 19px;
-        right: 19px;
+        padding-left: 26px;
+        padding-right: 26px;
     }
 
 }
 
 
-/* =================================
-   SMALL PHONES
-================================= */
+/* HP landscape */
+@media (max-width: 700px) and (orientation: landscape) {
 
-@media (max-width: 400px) {
-
-    .loan-suggestions,
-    .interest-suggestions,
-    .term-suggestions {
-        left: 16px;
-        right: 16px;
-    }
-
-}
-
-/* =========================
-   LANDSCAPE TABLE & CHART
-========================= */
-
-@media (orientation: landscape) and (max-height: 700px) {
     .table-container,
     .chart-container {
         width: calc(100% - 40px);
+
         margin-left: auto;
         margin-right: auto;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
+
+/* HP portrait */
+@media (max-width: 700px) and (orientation: portrait) {
+
+    .table-container,
+    .chart-container {
+        width: 100%;
+
+        margin-left: 0;
+        margin-right: 0;
+
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
 }
