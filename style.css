@@ -2389,8 +2389,7 @@ td:nth-child(5) {
 .easter-egg-subtext {
     margin: 0 auto;
 
-    width: calc(100% - 50px);
-    max-width: 520px;
+    width: calc(100% - 44px);
 
     font-family: "Nunito", sans-serif;
     font-size: clamp(14px, 3vw, 18px);
@@ -2399,8 +2398,7 @@ td:nth-child(5) {
 
     color: #596979;
 
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+    text-align: center;
 }
 
 @keyframes easterEggAppear {
@@ -2449,7 +2447,13 @@ td:nth-child(5) {
     }
 
     .easter-egg-subtext {
-        margin-left: 22px;
-        margin-right: 22px;
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0 22px;
+
+        box-sizing: border-box;
+        text-align: center;
+    
     }
 }

@@ -114,7 +114,7 @@ musicBtn.addEventListener("click", function(event) {
 
         musicMuted = false;
 
-        backgroundMusic.volume = 0.35;
+        backgroundMusic.volume = 0.6;
 
         backgroundMusic.play()
             .then(function() {
@@ -503,16 +503,7 @@ calculateBtn.addEventListener("click", function() {
 
     }
 
-if (
-   principal === 67 &&
-   Number(interestInput.value.replace(",", ".")) === 67 &&
-   months === 67
-   ) {
 
-   showEasterEgg();
-   return;
-}
-   
     let annuity;
 
     if (monthlyInterest === 0) {
