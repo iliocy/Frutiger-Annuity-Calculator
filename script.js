@@ -1066,3 +1066,227 @@ function createChart() {
     ctx.restore();
 
 }
+
+/* =========================
+   EASTER EGG
+========================= */
+
+const easterEggPopup =
+    document.getElementById("easterEggPopup");
+
+const easterEggAudio =
+    document.getElementById("easterEggAudio");
+
+
+let easterEggActive = false;
+
+
+/* =========================
+   SHOW EASTER EGG
+========================= */
+
+function showEasterEgg() {
+
+    if (!easterEggPopup || !easterEggAudio) {
+        return;
+    }
+
+
+    easterEggActive = true;
+
+
+    /*
+     * Tampilkan popup
+     */
+
+    easterEggPopup.classList.add("show");
+
+
+    /*
+     * Blok scroll halaman
+     */
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    /*
+     * Hentikan background music
+     * sementara Easter Egg berlangsung
+     */
+
+    if (backgroundMusic) {
+
+        backgroundMusic.pause();
+
+    }
+
+
+    /*
+     * Reset audio Easter Egg
+     */
+
+    easterEggAudio.currentTime = 0;
+
+
+    /*
+     * Putar audio
+     */
+
+    easterEggAudio.play()
+        .catch(function(error) {
+
+            console.log(
+                "Easter Egg audio gagal diputar:",
+                error
+            );
+
+        });
+
+}
+
+
+/* =========================
+   CLOSE EASTER EGG
+========================= */
+
+function hideEasterEgg() {
+
+    if (!easterEggPopup) {
+        return;
+    }
+
+
+    easterEggActive = false;
+
+
+    easterEggPopup.classList.remove(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+
+    /*
+     * Stop dan reset audio Easter Egg
+     */
+
+    if (easterEggAudio) {
+
+        easterEggAudio.pause();
+
+        easterEggAudio.currentTime = 0;
+
+    }
+
+
+    /*
+     * Kembalikan background music
+     * hanya kalau sebelumnya memang
+     * sedang tidak muted.
+     */
+
+    if (
+        typeof musicMuted !== "undefined" &&
+        musicMuted === false &&
+        backgroundMusic
+    ) {
+
+        backgroundMusic.play()
+            .catch(function(error) {
+
+                console.log(
+                    "Background music gagal dilanjutkan:",
+                    error
+                );
+
+            });
+
+    }
+
+}
+
+
+/* =========================
+   AUDIO SELESAI
+========================= */
+
+if (easterEggAudio) {
+
+    easterEggAudio.addEventListener(
+        "ended",
+        function() {
+
+            hideEasterEgg();
+
+        }
+    );
+
+}
+
+
+/* =========================
+   CHECK EASTER EGG
+========================= */
+
+calculateBtn.addEventListener(
+    "click",
+    function() {
+
+        /*
+         * Tunggu sebentar supaya
+         * nilai input yang sedang
+         * diproses oleh kalkulator
+         * sudah terbaca.
+         */
+
+        setTimeout(function() {
+
+            if (easterEggActive) {
+                return;
+            }
+
+
+            const loan =
+                parseLoanInput(
+                    loanInput.value
+                );
+
+
+            const interest =
+                Number(
+                    interestInput.value
+                        .replace(",", ".")
+                );
+
+
+            const months =
+                Number(
+                    monthsInput.value
+                );
+
+
+            /*
+             * KONDISI EASTER EGG
+             *
+             * Loan     = 67
+             * Interest = 67
+             * Months   = 67
+             */
+
+            if (
+                loan === 67 &&
+                interest === 67 &&
+                months === 67
+            ) {
+
+                showEasterEgg();
+
+            }
+
+        }, 0);
+
+    }
+);
