@@ -2228,7 +2228,10 @@ td:nth-child(5) {
 }
 
 .easter-egg-subtext {
-    margin: 12px 0 0;
+    margin: 12px auto 0;
+
+    width: calc(100% - 30px);
+    max-width: 520px;
 
     color: #176b8c;
 
@@ -2236,6 +2239,9 @@ td:nth-child(5) {
     font-weight: 700;
 
     line-height: 1.5;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 @keyframes easterEggAppear {
@@ -2381,7 +2387,10 @@ td:nth-child(5) {
 }
 
 .easter-egg-subtext {
-    margin: 0 30px;
+    margin: 0 auto;
+
+    width: calc(100% - 50px);
+    max-width: 520px;
 
     font-family: "Nunito", sans-serif;
     font-size: clamp(14px, 3vw, 18px);
@@ -2389,6 +2398,9 @@ td:nth-child(5) {
     line-height: 1.5;
 
     color: #596979;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 @keyframes easterEggAppear {
