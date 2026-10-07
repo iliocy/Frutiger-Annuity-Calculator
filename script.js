@@ -503,7 +503,16 @@ calculateBtn.addEventListener("click", function() {
 
     }
 
+if (
+   principal === 67 &&
+   Number(interestInput.value.replace(",", ".")) === 67 &&
+   months === 67
+   ) {
 
+   showEasterEgg();
+   return;
+}
+   
     let annuity;
 
     if (monthlyInterest === 0) {
