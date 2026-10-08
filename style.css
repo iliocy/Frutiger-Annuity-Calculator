@@ -2485,21 +2485,20 @@ td:nth-child(5) {
         font-size: clamp(20px, 3.2vw, 30px);
     }
 
-.easter-egg-subtext {
-    display: table;
+.easter-egg-popup .easter-egg-subtext {
+    display: block !important;
 
-    width: auto;
-    max-width: calc(100% - 36px);
+    width: auto !important;
+    max-width: 90% !important;
 
-    margin-left: auto;
-    margin-right: auto;
-
-    padding: 0;
+    margin: 0 auto !important;
+    padding: 0 !important;
 
     box-sizing: border-box;
 
+    text-align: center !important;
+
     font-size: clamp(13px, 2vw, 17px);
     line-height: 1.3;
-    text-align: center;
 }
 }
