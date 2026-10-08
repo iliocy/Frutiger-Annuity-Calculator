@@ -2486,13 +2486,15 @@ td:nth-child(5) {
     }
 
 .easter-egg-subtext {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    display: table;
 
-    width: 100%;
-    margin: 0;
-    padding: 0 18px;
+    width: auto;
+    max-width: calc(100% - 36px);
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 0;
 
     box-sizing: border-box;
 
