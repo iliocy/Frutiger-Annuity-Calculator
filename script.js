@@ -114,7 +114,7 @@ musicBtn.addEventListener("click", function(event) {
 
         musicMuted = false;
 
-        backgroundMusic.volume = 2.5;
+        backgroundMusic.volume = 1.0;
 
         backgroundMusic.play()
             .then(function() {
